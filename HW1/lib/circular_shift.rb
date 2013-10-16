@@ -4,17 +4,19 @@ class CircularShift
     @shifted= Array.new
     @i= 0
     @num = @lines.length
+    @stopwords = File.open("english.txt", "r").readlines.map!(&:chomp)
 
     begin
       sentence = @lines[0]
       sentence = sentence.split(" ")
-      @shifted.push([@i, sentence[0][0]])
-      word = @lines[0]
+      sentence = sentence - @stopwords
+      @shifted.push([@i, sentence[0]])
+      line = @lines[0]
       @lines.shift
-      @lines.push(word)
+      @lines.push(line)
       @i +=1;
-    end until @i >= @num - 1
+    end while @i < @num
 
+    return 
   end
-
 end
