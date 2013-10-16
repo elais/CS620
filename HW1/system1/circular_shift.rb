@@ -19,6 +19,9 @@ class CircularShift
         sentence.push(word)
         j +=1;
       end while j < sentence.length
+      line = @lines[0]
+      @lines.shift
+      @lines.push(line)
       @i +=1;
     end while @i < @num
 

@@ -2,9 +2,8 @@ class Output
   def initialize(input, alphabetize)
     @input= input
     @alphabetize= alphabetize
-    print @alphabetize
     @alphabetize.each do |index|
-      print @input[index[0]].sub(index[1], index[1].upcase) + "\n\n"
+      printf("\n...%s...\n",@input[index[0]].sub(/(#{index[1]})/i, index[1].upcase))
     end
   end
 end
