@@ -2,8 +2,9 @@ class Output
   def initialize(input, alphabetize)
     @input= input
     @alphabetize= alphabetize
+    print @alphabetize
     @alphabetize.each do |index|
-      puts @input[index[0].gsub(/index[1]/,index[1].upper)]
+      print @input[index[0]].sub(index[1], index[1].upcase) + "\n\n"
     end
   end
 end
