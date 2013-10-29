@@ -1,17 +1,9 @@
 include Java
 
-import java.awt.Color
-import java.awt.Container
-import java.awt.Font
-import java.awt.Dimension
-import java.awt.Toolkit
-import java.awt.Graphics
-import java.awt.event.KeyEvent
-import java.awt.event.KeyListener
 import javax.swing.JFrame
+import java.awt.event.KeyListener
 
-
-class Sext < JFrame
+class Observer < JFrame
   include KeyListener
   def initialize
     super "Sext Machine"
@@ -20,10 +12,9 @@ class Sext < JFrame
   end
 
   def initUI
-
     self.addKeyListener self
 
-    @text = " "
+    @glyph = CharacterGlyph.new
     self.setLayout nil
     self.setDefaultCloseOperation ::JFrame::EXIT_ON_CLOSE
     self.setSize 450, 400
@@ -31,25 +22,30 @@ class Sext < JFrame
     self.setVisible true
   end
 
+  def update
+    g = getGraphics()
+    self.paint(g)
+  end
+
   def paint g
-    g.drawString(@text, 15, 50)
+    @glyph.draw(g)
+
   end
 
   def keyPressed e
+    id = e.getKeyChar().chr
+    if id == KeyEvent.KEY_TYPED
+      c = e.getKeyChar().chr
+    end
+    self.repaint
   end
 
-
-
   def keyTyped e
-    @text += e.getKeyChar().chr
-    self.repaint
+
   end
 
   def keyReleased e
   end
 
-  # Handle the key typed event from the text field.
 
 end
-
-Sext.new.getRootPane().setOpaque(false)
