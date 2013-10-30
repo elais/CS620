@@ -1,5 +1,3 @@
-include Java
-
 class Subject
   def attach
   end

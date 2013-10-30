@@ -5,6 +5,6 @@ class CharacterGlyph < Glyph
   end
 
   def draw g
-    g.drawString(@c + " ", 50, 50)
+    g.drawString(@c, 50, 50)
   end
 end

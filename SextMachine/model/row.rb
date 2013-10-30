@@ -1,5 +1,3 @@
-include Java
-
 class Row < Glyph
   def initialize
 
