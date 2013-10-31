@@ -1,4 +1,4 @@
-class Subject
+module Subject
   def attach
   end
 
@@ -7,5 +7,5 @@ class Subject
 
   def notifyObservers
   end
-end 
+end
 

@@ -1,15 +1,14 @@
 class ControllerView < JFrame
-  include KeyListener, Observer
+  include KeyListener, Observer, ComponentListener
   def initialize model
     super "Sext Machine"
-    @model = model
+    @document = model
     self.initUI
   end
 
   def initUI
     self.addKeyListener self
-
-    @model.attach self
+    @document.attach self
     self.setLayout nil
     self.setDefaultCloseOperation ::JFrame::EXIT_ON_CLOSE
     self.setSize 450, 400
@@ -19,18 +18,24 @@ class ControllerView < JFrame
 
   def update
     g = getGraphics()
-    @model.draw(g)
+    self.setSize 
+    @document.draw(g)
     self.paint(g)
     self.repaint
   end
 
   def paint g
-    @model.draw(g)
+    @document.draw(g, x, y, 450, 400)
+  end
+
+  def window(x, y)
+    @frameWidth = x
+    @frameHeight = y
   end
 
   def keyPressed e
     c = e.getKeyChar().chr
-    @model.addGlyph(CharacterGlyph.new(c))
+    @document.addGlyph(CharacterGlyph.new(c))
   end
 
   def keyTyped e
@@ -38,6 +43,9 @@ class ControllerView < JFrame
 
   def keyReleased e
   end
+
+  def componentResized
+    
 
 
 end
