@@ -1,9 +1,6 @@
 class SimpleBreak < Format
-  def initialize(glyphs, frameWidth, frameHeight)
-    @width = frameWidth
-    @height = frameHeight
+  def initialize
   end
-
   def linebreak g, width, height
     glyphs = g
   end

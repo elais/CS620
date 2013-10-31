@@ -14,6 +14,8 @@ class ControllerView < JFrame
     self.setSize 450, 400
     self.setLocationRelativeTo nil
     self.setVisible true
+    @frameWidth = self.getWidth
+    @frameHeight = self.getHeight
   end
 
   def update
@@ -25,7 +27,7 @@ class ControllerView < JFrame
   end
 
   def paint g
-    @document.draw(g, x, y, 450, 400)
+    @document.draw(g, x, y, @frameWidth, @frameHeight)
   end
 
   def window(x, y)
@@ -45,7 +47,8 @@ class ControllerView < JFrame
   end
 
   def componentResized
-    
+    @document.notifySizeChange
+  end
 
 
 end

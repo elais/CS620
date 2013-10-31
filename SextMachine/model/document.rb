@@ -3,7 +3,6 @@ class Document
   def initialize format
     @glyphs = Array.new
     @observers = Array.new
-     
     self.setFormat format
   end
 
@@ -20,6 +19,10 @@ class Document
     end
   end
 
+  def notifySizeChange
+    self.notify_observers
+  end
+
   def addGlyph g
     @glyphs.push(g)
     self.notify_observers
@@ -29,7 +32,7 @@ class Document
     rows = self.format(frameWidth, frameHeight)
     rows.each do |row|
       rows.draw(g, x, y)
-      y +=1
+      y += row.getWidth
     end
   end
 

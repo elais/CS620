@@ -1,8 +1,10 @@
 
 class Glyph
   def initialize
-    @width = 1
-    @height = 1
+    @width = 12
+    @height = 12
+  end
+
   def draw(g, x, y)
   end
 

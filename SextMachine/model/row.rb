@@ -12,11 +12,12 @@ class Row < Glyph
     row = y
     @glyph_list.each do |glyph|
       glyph.draw(g, col, row)
-      col += 1
+      col += glyph.getWidth
     end
   end
 
   def getWidth
+    @width = 12
     @glyph_list.each do |glyph|
       @width += glyph.getWidth
     end
@@ -24,6 +25,7 @@ class Row < Glyph
   end
 
   def getHeight
+    @height = 20
     @glyph_list.each do |glyph|
       @height += 1
     end
