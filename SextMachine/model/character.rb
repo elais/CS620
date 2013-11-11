@@ -1,6 +1,8 @@
 class CharacterGlyph < Glyph
   def initialize c
     @c = c
+    @width = 10
+    @height = 12
   end
 
   def draw(g, x, y)
@@ -8,12 +10,10 @@ class CharacterGlyph < Glyph
   end
 
   def getWidth
-    @width = 12
     return @width
   end
 
   def getHeight
-    @height = 12
     return @width
   end
 end

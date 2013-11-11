@@ -1,21 +1,21 @@
 include Java
 
-import java.awt.Color
-import java.awt.Container
-import java.awt.Font
-import java.awt.Dimension
-import java.awt.Toolkit
-import java.awt.Graphics
 import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
+import java.awt.image.BufferedImage
+import java.awt.Color
+import java.awt.Container
+import java.awt.Dimension
+import java.awt.Font
+import java.awt.Graphics
+import java.awt.Toolkit
 import javax.swing.JFrame
-
+import java.swing.WindowConstants
 
 class Sext < JFrame
   include KeyListener
   def initialize
     super "Sext Machine"
-
     self.initUI
   end
 

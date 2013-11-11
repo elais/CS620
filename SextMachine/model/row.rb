@@ -1,10 +1,7 @@
 class Row < Glyph
   def initialize
+    @glyph_list = Array.new
 
-    self.init
-  end
-
-  def init
   end
 
   def draw(g, x, y)
@@ -17,18 +14,26 @@ class Row < Glyph
   end
 
   def getWidth
-    @width = 12
+    @width = 0
     @glyph_list.each do |glyph|
       @width += glyph.getWidth
     end
     return @width
   end
 
+  def addGlyph g
+    @glyph_list.push(g)
+  end
+
+  def removeGlyph g
+    @glyph_list.delete(g)
+  end
+
   def getHeight
-    @height = 20
-    @glyph_list.each do |glyph|
-      @height += 1
-    end
+    @height = 12
+    #@glyph_list.each do |glyph|
+    #  @height = glyph.getHeight
+    #end
     return @height
   end
 end

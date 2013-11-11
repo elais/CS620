@@ -31,8 +31,8 @@ class Document
   def draw(g, x, y, frameWidth, frameHeight)
     rows = self.format(frameWidth, frameHeight)
     rows.each do |row|
-      rows.draw(g, x, y)
-      y += row.getWidth
+      row.draw(g, x, y)
+      y += row.getHeight
     end
   end
 
@@ -40,13 +40,12 @@ class Document
     return @glyphs.length
   end
 
+  def getGlyphs
+    return @glyphs
+  end
+
   def setFormat f
     @format = f
   end
 
-  def format(frameWidth, frameHeight)
-    rowGlyphs = Array.new
-    rowGlyphsList = @format.linebreak(@glyphs, frameWidth, frameHeight)
-    return rowGlyphsList
-  end
 end
