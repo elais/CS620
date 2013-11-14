@@ -1,14 +1,19 @@
 class Scroll < Controller
   def handleEvent e
     keyCode = e.getKeyCode
-    if e.controlDown? == false && keyCode == keyEvent.VK_DOWN
+    if !e.isControlDown && keyCode == KeyEvent::VK_DOWN
       self.increaseStratRow
       @controller.document.refresh
-    elsif e.controlDown? && keyCode == keyEvent.VK_UP
+    elsif e.isControlDown && keyCode == KeyEvent::VK_UP
       self.decreaseStratRow
       @controller.document.refresh
     else
-      @controller.handleEvent e
+      c = e.getKeyChar().chr
+      if c == "f".chr
+        @document.addGlyph(Arrow.new())
+      else
+        @document.addGlyph(CharacterGlyph.new(c))
+      end
     end
   end
 
