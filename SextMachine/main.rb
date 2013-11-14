@@ -25,6 +25,6 @@ require MAIN_HOME + '/controller/scroll'
 require MAIN_HOME + '/view/view'
 require MAIN_HOME + '/view/controllerview'
 
-model = Document.new(SimpleBreak.new)
-controller = Scroll.new(model,SimpleBreak.new )
+model = Document.new
+controller = Scroll.new(BasicDraw.new(model, SimpleBreak.new))
 view = View.new(controller, model)

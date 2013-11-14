@@ -1,4 +1,9 @@
 class BasicDraw < Controller
+  def initialize document, format
+    @document = document
+    @format = format
+  end
+
   def draw(g, x, y, frameWidth, frameHeight)
     rows = self.format(frameWidth, frameHeight)
     rows.each do |row|

@@ -29,6 +29,7 @@ class View < JFrame
   end
 
   def paint g
+#    self.repaint
     @controller.draw(g, @x, @y, self.getContentPane.getSize.width,
                      self.getContentPane.getSize.height)
   end

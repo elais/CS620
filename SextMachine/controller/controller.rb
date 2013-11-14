@@ -1,9 +1,9 @@
 class Controller
   include KeyListener, ComponentListener, MouseListener, Context
-  def initialize document, format
-    @document = document
-    @format = format
-  end
+#  def initialize document, format
+#    @document = document
+#    @format = format
+#  end
 
   def format frameWidth, frameHeight
   end

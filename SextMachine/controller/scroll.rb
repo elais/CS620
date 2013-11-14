@@ -1,20 +1,22 @@
 class Scroll < Controller
+  def initialize concrete
+    @concrete = concrete
+  end
+
   def handleEvent e
     keyCode = e.getKeyCode
+    puts keyCode
     if !e.isControlDown && keyCode == KeyEvent::VK_DOWN
       self.increaseStratRow
-      @controller.document.refresh
-    elsif e.isControlDown && keyCode == KeyEvent::VK_UP
+    elsif !e.isControlDown && keyCode == KeyEvent::VK_UP
       self.decreaseStratRow
-      @controller.document.refresh
     else
-      c = e.getKeyChar().chr
-      if c == "f".chr
-        @document.addGlyph(Arrow.new())
-      else
-        @document.addGlyph(CharacterGlyph.new(c))
-      end
+      @concrete.keyPressed e
     end
+  end
+
+  def attach s
+    @simpleDraw = s
   end
 
   def decreaseStratRow

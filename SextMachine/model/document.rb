@@ -1,9 +1,9 @@
 class Document
   include Context, Subject
-  def initialize format
+  def initialize #format
     @glyphs = Array.new
     @observers = Array.new
-    self.setFormat format
+#    self.setFormat format
   end
 
   def attach v
