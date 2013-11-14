@@ -1,16 +1,17 @@
 class Scroll < Controller
   def initialize concrete
     @concrete = concrete
-    @startFrom = 1
+    @startFrom = 0
   end
 
   def handleEvent e
     keyCode = e.getKeyCode
+    print @startFrom
     if keyCode == KeyEvent::VK_DOWN
-      self.increaseStratRow
+      self.increaseStartRow
       @concrete.document.notify_observers
     elsif keyCode == KeyEvent::VK_UP
-      self.decreaseStratRow
+      self.decreaseStartRow
       @concrete.document.notify_observers
     else
       @concrete.handleEvent e
@@ -22,7 +23,7 @@ class Scroll < Controller
     @simpleDraw = s
   end
 
-  def decreaseStratRow
+  def decreaseStartRow
     @startFrom -= 1
     if @startFrom < 0
       @startFrom == 0
@@ -30,10 +31,10 @@ class Scroll < Controller
   end
 
   def draw(g, x, y, frameWidth, frameHeight)
-    @concrete.draw(g, x, y, frameWidth, frameHeight)
+    @concrete.draw(g, x, y - @startFrom, frameWidth, frameHeight)
   end
 
-  def increaseStratRow
+  def increaseStartRow
     @startFrom += 1
   end
 

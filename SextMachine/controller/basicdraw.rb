@@ -17,11 +17,11 @@ class BasicDraw < Controller
   end
   def handleEvent e
     c = e.getKeyChar().chr
-    if c == "f".chr
-      @document.addGlyph(Arrow.new())
-    else
-      @document.addGlyph(CharacterGlyph.new(c))
-    end
+#    if c == "f".chr
+#      @document.addGlyph(Arrow.new())
+#    else
+    @document.addGlyph(CharacterGlyph.new(c))
+#    end
   end
 
   def keyPressed e

@@ -6,7 +6,7 @@ class CharacterGlyph < Glyph
   end
 
   def draw(g, x, y)
-    g.drawString(@c, x, y)
+    g.drawString(@c + "", x, y)
   end
 
   def getWidth
