@@ -12,13 +12,20 @@ class BasicDraw < Controller
     end
   end
 
-  def keyPressed e
+  def document
+    @document
+  end
+  def handleEvent e
     c = e.getKeyChar().chr
     if c == "f".chr
       @document.addGlyph(Arrow.new())
     else
       @document.addGlyph(CharacterGlyph.new(c))
     end
+  end
+
+  def keyPressed e
+    self.handleEvent e
   end
 
   def format(frameWidth, frameHeight)
