@@ -1,5 +1,5 @@
 class Controller
-  include KeyListener, ComponentListener, MouseListener, Context
+  include KeyListener, ComponentListener, MouseListener, Context, CommandDispatcher
 #  def initialize document, format
 #    @document = document
 #    @format = format
