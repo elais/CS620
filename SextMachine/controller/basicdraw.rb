@@ -17,12 +17,16 @@ class BasicDraw < Controller
     @document
   end
   def handleEvent e
-    if !e.isControlDown
-      c = e.getKeyChar().chr
+    keyCode = e.getKeyCode
+    c = e.getKeyChar.chr
+    if !e.isControlDown && c =~ /[[:alpha:]]/
       command = Insert.new(@document, CharacterGlyph.new(c))
       @commander.execute(command)
 #      @document.addGlyph(CharacterGlyph.new(c))
-    elsif e.isControlDown && (c != 'u')
+#      if keyCode == KeyEvent::VK_DELETE
+#        @commander.undo
+#      end
+    elsif (e.isControlDown && (c != 'u')) or (keyCode == KeyEvent::VK_DELETE)
       @commander.undo
 #    elsif e.isMetaDown && e.isShiftDown && (c != 'z') && (keyCode == 90)
 #      @command.re
@@ -34,7 +38,7 @@ class BasicDraw < Controller
 #    end
   end
 
-  def keyPressed e
+  def keyTyped e
     self.handleEvent e
   end
 

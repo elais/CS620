@@ -21,7 +21,7 @@ class SpellCheck < Visitor
     if !word == "" && SpellChecker.getInstance.isMispelled(word)
       if @spellingHandler != nil
         @spellingHandler.handleSpellingError(@currentWord.to_s,
-                                             @glyphs.to_a
+                                             @glyphs.to_a)
       end
     end
     @currentWord = ""
@@ -33,3 +33,5 @@ class SpellCheck < Visitor
 
   def visitRow row
     g = row.getGlyphs
+  end
+end
