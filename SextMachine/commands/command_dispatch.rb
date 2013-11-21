@@ -1,4 +1,4 @@
-module CommandDispatcher
+class CommandDispatcher
   def initialize
     @commands = Array.new
     @currentCommand == nil
@@ -12,18 +12,19 @@ module CommandDispatcher
 
   def undoAll
     @commands.reverse.each do |cmd|
-      cmd.undo
+      cmd.unExecute
     end
   end
 
   def undo
+    @currentCommand.unExecute
     @commands.remove[-1]
     @currentCommand = @commands[-1]
   end
 
-  def redo
-    if @currentCommand?
-      @currentCommand.redo
-    end
-  end
+#  def redo
+#    if @currentCommand == nil
+#      @currentCommand.redo
+#    end
+#  end
 end

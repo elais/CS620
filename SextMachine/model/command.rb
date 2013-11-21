@@ -2,9 +2,6 @@ module Command
   def execute
   end
 
-  def redo
-  end
-
-  def undo
+  def unExecute
   end
 end

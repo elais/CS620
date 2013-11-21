@@ -14,6 +14,6 @@ class CharacterGlyph < Glyph
   end
 
   def getHeight
-    return @width
+    return @Height
   end
 end

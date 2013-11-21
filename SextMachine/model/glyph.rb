@@ -1,4 +1,3 @@
-
 class Glyph
   def initialize
     @width = 10
@@ -14,4 +13,3 @@ class Glyph
   def getHeight
   end
 end
-

@@ -2,6 +2,7 @@ class BasicDraw < Controller
   def initialize document, format
     @document = document
     @format = format
+    @commander = CommandDispatcher.new
   end
 
   def draw(g, x, y, frameWidth, frameHeight)
@@ -16,11 +17,18 @@ class BasicDraw < Controller
     @document
   end
   def handleEvent e
-    c = e.getKeyChar().chr
+    if !e.isControlDown
+      c = e.getKeyChar().chr
+      command = Insert.new(@document, CharacterGlyph.new(c))
+      @commander.setCommand(command)
+#      @document.addGlyph(CharacterGlyph.new(c))
+    elsif e.isControlDown && (c != 'z') && (keyCode == 90)
+      @commander.undo
+    end
 #    if c == "f".chr
 #      @document.addGlyph(Arrow.new())
 #    else
-    @document.addGlyph(CharacterGlyph.new(c))
+#    @document.addGlyph(CharacterGlyph.new(c))
 #    end
   end
 

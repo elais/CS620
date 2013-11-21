@@ -1,9 +1,8 @@
 class Document
   include Context, Subject, Command
-  def initialize #format
+  def initialize
     @glyphs = Array.new
     @observers = Array.new
-#    self.setFormat format
     @commands = Array.new
   end
 
@@ -43,6 +42,10 @@ class Document
 
   def getGlyphs
     return @glyphs
+  end
+
+  def removeGlyph g
+    @glyphs.pop(g)
   end
 
   def setFormat f
