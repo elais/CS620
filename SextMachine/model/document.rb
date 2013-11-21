@@ -45,7 +45,8 @@ class Document
   end
 
   def removeGlyph g
-    @glyphs.pop(g)
+    @glyphs.delete(g)
+    self.notify_observers
   end
 
   def setFormat f

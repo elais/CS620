@@ -20,10 +20,12 @@ class BasicDraw < Controller
     if !e.isControlDown
       c = e.getKeyChar().chr
       command = Insert.new(@document, CharacterGlyph.new(c))
-      @commander.setCommand(command)
+      @commander.execute(command)
 #      @document.addGlyph(CharacterGlyph.new(c))
-    elsif e.isControlDown && (c != 'z') && (keyCode == 90)
+    elsif e.isControlDown && (c != 'u')
       @commander.undo
+#    elsif e.isMetaDown && e.isShiftDown && (c != 'z') && (keyCode == 90)
+#      @command.re
     end
 #    if c == "f".chr
 #      @document.addGlyph(Arrow.new())

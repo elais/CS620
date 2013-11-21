@@ -4,7 +4,9 @@ import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
 import java.awt.event.ComponentListener
 import java.awt.event.MouseListener
+import java.awt.Canvas
 import java.awt.Graphics
+import java.awt.Font
 import java.awt.FontMetrics
 import javax.swing.JFrame
 
@@ -20,6 +22,8 @@ require MAIN_HOME + '/model/arrow_glyph'
 require MAIN_HOME + '/model/row'
 require MAIN_HOME + '/model/command'
 require MAIN_HOME + '/model/document'
+require MAIN_HOME + '/visitor/visitor'
+require MAIN_HOME + '/visitor/spellcheck'
 require MAIN_HOME + '/commands/command_dispatch'
 require MAIN_HOME + '/commands/backspace'
 require MAIN_HOME + '/commands/insert'
