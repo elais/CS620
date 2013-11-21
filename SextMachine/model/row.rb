@@ -36,4 +36,8 @@ class Row < Glyph
     #end
     return @height
   end
+
+  def getGlyphs
+    @glyph_list
+  end
 end

@@ -1,6 +1,6 @@
 class SpellCheck < Visitor
   def initialize
-    @currentWord = Array.new
+    @currentWord = ""
     @currentGlpyhs = Array.new
     @glyphs = Array.new
   end
@@ -18,4 +18,18 @@ class SpellCheck < Visitor
 
   def spellCheck
     word = @currentWord.to_s
-    if !word
+    if !word == "" && SpellChecker.getInstance.isMispelled(word)
+      if @spellingHandler != nil
+        @spellingHandler.handleSpellingError(@currentWord.to_s,
+                                             @glyphs.to_a
+      end
+    end
+    @currentWord = ""
+    @currentGlyphs.clear
+  end
+
+  def visitImage
+  end
+
+  def visitRow row
+    g = row.getGlyphs
