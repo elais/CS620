@@ -11,6 +11,7 @@ import java.awt.FontMetrics
 import java.awt.image.BufferedImage
 import java.awt.Toolkit
 import javax.imageio.ImageIO
+import javax.swing.ImageIcon
 import javax.swing.JFrame
 
 MAIN_HOME = File.dirname(File.expand_path(__FILE__))
@@ -19,6 +20,7 @@ require MAIN_HOME + '/util/subject'
 require MAIN_HOME + '/util/strategy'
 require MAIN_HOME + '/util/simplebreak'
 require MAIN_HOME + '/util/observer'
+require MAIN_HOME + '/util/dictionary'
 require MAIN_HOME + '/model/glyph'
 require MAIN_HOME + '/model/character'
 require MAIN_HOME + '/model/arrow_glyph'

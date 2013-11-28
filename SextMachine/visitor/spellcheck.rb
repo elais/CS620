@@ -1,4 +1,4 @@
-class SpellCheck < Visitor
+class SpellCheckVisitor < Visitor
   def initialize
     @currentWord = ""
     @currentGlpyhs = Array.new
@@ -18,7 +18,7 @@ class SpellCheck < Visitor
 
   def spellCheck
     word = @currentWord.to_s
-    if !word == "" && SpellChecker.getInstance.isMispelled(word)
+    if !word == "" && SpellChecker.isMispelled(word)
       if @spellingHandler != nil
         @spellingHandler.handleSpellingError(@currentWord.to_s,
                                              @glyphs.to_a)
@@ -33,5 +33,12 @@ class SpellCheck < Visitor
 
   def visitRow row
     g = row.getGlyphs
+    g.each do |glyph|
+      @glyphs.push(glyph)
+      glyph.accept(self)
+    end
+    if @currentWord.length > 0
+      self.spellCheck
+    end
   end
 end

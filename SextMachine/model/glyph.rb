@@ -12,4 +12,7 @@ class Glyph
 
   def getHeight
   end
+
+  def accept visitor
+  end
 end

@@ -31,9 +31,9 @@ class BasicDraw < Controller
         command = Insert.new(@document, CharacterGlyph.new(c))
         @commander.execute(command)
       end
-    elsif e.isControlDown and e.getKeyChar.chr == "u".chr
+    elsif e.isControlDown && keyCode == 85
       @commander.redo
-    elsif e.isControlDown && e.getKeyChar.chr != 'i'
+    elsif e.isControlDown && keyCode == 73
       command = InsertPix.new(@document, Pix.new)
       @commander.execute(command)
     end
