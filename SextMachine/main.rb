@@ -8,6 +8,9 @@ import java.awt.Canvas
 import java.awt.Graphics
 import java.awt.Font
 import java.awt.FontMetrics
+import java.awt.image.BufferedImage
+import java.awt.Toolkit
+import javax.imageio.ImageIO
 import javax.swing.JFrame
 
 MAIN_HOME = File.dirname(File.expand_path(__FILE__))
@@ -28,6 +31,8 @@ require MAIN_HOME + '/visitor/spellcheck'
 require MAIN_HOME + '/commands/command_dispatch'
 require MAIN_HOME + '/commands/backspace'
 require MAIN_HOME + '/commands/insert'
+require MAIN_HOME + '/commands/insertArrow'
+require MAIN_HOME + '/commands/insertImage'
 require MAIN_HOME + '/controller/controller'
 require MAIN_HOME + '/controller/basicdraw'
 require MAIN_HOME + '/controller/scroll'
@@ -37,3 +42,4 @@ require MAIN_HOME + '/view/controllerview'
 model = Document.new
 controller = Scroll.new(BasicDraw.new(model, SimpleBreak.new))
 view = View.new(controller, model)
+view2 = View.new(controller, model)

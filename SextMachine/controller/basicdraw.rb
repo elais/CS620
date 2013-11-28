@@ -16,24 +16,27 @@ class BasicDraw < Controller
   def document
     @document
   end
+
   def handleEvent e
     keyCode = e.getKeyCode
     if !e.isControlDown && (keyCode > 1 && keyCode < 223)
       if keyCode == KeyEvent::VK_BACK_SPACE
         @commander.undo
       elsif keyCode != KeyEvent::VK_BACK_SPACE
+#        if e.getKeyChar.chr == "f".chr
+#          c = e.getKeyChar.chr
+#          command = InsertArrow.new(@document, Arrow.new)
+#          @commander.execute(command)
         c = e.getKeyChar.chr
         command = Insert.new(@document, CharacterGlyph.new(c))
         @commander.execute(command)
       end
-    elsif e.isControlDown && (c != 'u')
+    elsif e.isControlDown and e.getKeyChar.chr == "u".chr
       @commander.redo
+    elsif e.isControlDown && e.getKeyChar.chr != 'i'
+      command = InsertPix.new(@document, Pix.new)
+      @commander.execute(command)
     end
-#    if c == "f".chr
-#      @document.addGlyph(Arrow.new())
-#    else
-#    @document.addGlyph(CharacterGlyph.new(c))
-#    end
   end
 
   def keyTyped e

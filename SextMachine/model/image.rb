@@ -1,7 +1,6 @@
-class Image < Glyph
-  def initialize pic, path
-    @image = pic
-    @path = path
+class Pix < Glyph
+  def initialize
+    @image = nil
   end
 
   def draw g, x, y
@@ -22,9 +21,9 @@ class Image < Glyph
 
   def getImage
     if @image == nil
-      @image = IO.popen(MAIN_HOME + "util/images/e405.jpg")
+      pix = File.absolute_path(File.expand_path(MAIN_HOME + '/util/images/e405.png'))
+      @image = ImageIO.read(java.io.File.new(pix))
     end
     return @image
   end
 end
-

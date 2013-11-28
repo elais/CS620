@@ -12,8 +12,17 @@ class Arrow < Glyph
   end
 
   def getHeight
-    return @height
+    height = @fontMetric.getHeight
+    return height
   end
+
+#  def getWidth
+#    return @width
+  #  end
+
+#  def getHeight
+#    return @height
+#  end
 
 end
 
