@@ -40,4 +40,8 @@ class Row < Glyph
   def getGlyphs
     @glyph_list
   end
+
+  def accept visitor
+    visitor.visitRow(self)
+  end
 end

@@ -11,5 +11,9 @@ class Dictionary
     @data[key] += [words].flatten
     @data[key].uniq!
   end
+
+  def getData
+    @data
+  end
 end
 

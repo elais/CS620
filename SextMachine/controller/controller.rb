@@ -1,5 +1,5 @@
 class Controller
-  include KeyListener, ComponentListener, MouseListener, Context
+  include KeyListener, ComponentListener, MouseListener, Context, SpellingHandler
 #  def initialize document, format
 #    @document = document
 #    @format = format
@@ -24,6 +24,9 @@ class Controller
   end
 
   def keyReleased e
+  end
+
+  def setGraphics
   end
 
   def mouseClicked e

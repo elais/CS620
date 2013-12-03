@@ -3,13 +3,25 @@ class BasicDraw < Controller
     @document = document
     @format = format
     @commander = CommandDispatcher.new
+    @spellCheckEnabled = true
   end
 
+
   def draw(g, x, y, frameWidth, frameHeight)
+    self.setGraphics g
     rows = self.format(frameWidth, frameHeight)
-    rows.each do |row|
-      row.draw(g, x, y)
-      y += row.getHeight
+    if @spellCheckEnabled
+      visitor = SpellCheckVisitor.new(self)
+      rows.each do |row|
+        row.draw(g, x, y)
+        y += row.getHeight
+        row.accept visitor
+      end
+    else
+      rows.each do |row|
+        row.draw(g, x, y)
+        y += row.getHeight
+      end
     end
   end
 
@@ -43,6 +55,12 @@ class BasicDraw < Controller
     self.handleEvent e
   end
 
+  def handleSpelling word, glyphs
+    glyphs.each do |glyph|
+      glyph.select(@graphics, Color::RED, Color::WHITE, glyph.getWidth, glyph.getHeight)
+    end
+  end
+
   def format(frameWidth, frameHeight)
 #    rowGlyphs = Array.new
     rowGlyphsList = @format.linebreak(@document.getGlyphs, frameWidth, frameHeight)
@@ -54,5 +72,9 @@ class BasicDraw < Controller
     x = e.getX
     y = e.getY
     puts "mouse clicked at position " + x + " , " + y
+  end
+
+  def setGraphics g
+    @graphics = g
   end
 end

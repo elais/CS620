@@ -4,17 +4,22 @@ import java.awt.event.KeyEvent
 import java.awt.event.KeyListener
 import java.awt.event.ComponentListener
 import java.awt.event.MouseListener
+import java.awt.geom.Rectangle2D
 import java.awt.Canvas
+import java.awt.Color
 import java.awt.Graphics
 import java.awt.Font
 import java.awt.FontMetrics
 import java.awt.image.BufferedImage
 import java.awt.Toolkit
+import java.io.BufferedReader
+import java.io.FileReader
 import javax.imageio.ImageIO
 import javax.swing.ImageIcon
 import javax.swing.JFrame
 
 MAIN_HOME = File.dirname(File.expand_path(__FILE__))
+require 'singleton'
 require MAIN_HOME + '/util/context'
 require MAIN_HOME + '/util/subject'
 require MAIN_HOME + '/util/strategy'
@@ -22,6 +27,7 @@ require MAIN_HOME + '/util/simplebreak'
 require MAIN_HOME + '/util/observer'
 require MAIN_HOME + '/util/spellcheck'
 require MAIN_HOME + '/util/dictionary'
+require MAIN_HOME + '/util/spellErrorHandler'
 require MAIN_HOME + '/model/glyph'
 require MAIN_HOME + '/model/character'
 require MAIN_HOME + '/model/arrow_glyph'

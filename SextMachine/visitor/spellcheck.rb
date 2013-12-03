@@ -1,28 +1,29 @@
 class SpellCheckVisitor < Visitor
-  def initialize
+  def initialize controller
     @currentWord = ""
-    @currentGlpyhs = Array.new
+    @currentGlyphs = Array.new
     @glyphs = Array.new
+    @controller = controller
+    @spellChecker = SpellChecker.instance
   end
 
   def visitChar c
-    if c.match(/^[[:alpha]]$/) || c.match(/^[[:digit]]$/)
-      @currentWord.push(c)
+    if c.getChar.match(/^[[A-Za-z]]$/) || c.getChar.match("'")
+      @currentWord << c.getChar
       @currentGlyphs.push(c)
     else
-      @glyphs.delete(glyphs.length -1)
+      @glyphs.delete_at(-1)
       self.spellCheck
       @glyphs.clear
     end
   end
 
   def spellCheck
-    word = @currentWord.to_s
-    if !word == "" && SpellChecker.isMispelled(word)
-      if @spellingHandler != nil
-        @spellingHandler.handleSpellingError(@currentWord.to_s,
-                                             @glyphs.to_a)
-      end
+    word = @currentWord.downcase
+    if word != "" && @spellChecker.isMispelled(word)
+      @controller.handleSpelling(@currentWord, @glyphs)
+    else
+      puts "#{word} last correctly spelled word"
     end
     @currentWord = ""
     @currentGlyphs.clear
