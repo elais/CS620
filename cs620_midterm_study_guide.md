@@ -122,7 +122,7 @@ There are two basic functions that a designer must perform very carefully: *deco
 		1. to reveal a rough description of the internal structure of the module,
 		2. to reveal a description of a "hypothetical" implementation of the module.
 	- Both approaches are fraught with danger.
-	- It is extremely difficult to reveal some part of a n implementation (in order to be precise) and then instrucxt the reader as to precisely which parts of the revealed information he must not use.
+	- It is extremely difficult to reveal some part of an implementation (in order to be precise) and then instrucxt the reader as to precisely which parts of the revealed information he must not use.
 
 #### Hierarchical Structure and Subsetable Systems
 
@@ -227,11 +227,11 @@ There are two basic functions that a designer must perform very carefully: *deco
 #### Description
 - Modules that conform to the open-closed principle have two primary attributes.
 	1. They are "Open For Extension". This means that the behavior of the module can be extended. We can make the module behave in new and different way sas the requirements of the application change, or to meet the needs of new aplications.
-	2. They are "Closed for Modification". THe source code of such a module is inviolate. No one is allowed to make source code changes to it.
+	2. They are "Closed for Modification". The source code of such a module is inviolate. No one is allowed to make source code changes to it.
 
 #### The Liskov Substitution Principle
 
-- The primary mechanisms behind the Open-Closed principle are abstraction and ploymorphism.
+- The primary mechanisms behind the Open-Closed principle are abstraction and polymorphism.
 	- In statically typed languages one of the key mechanisms that supports abstraction and polymorphism is inheritance.
 	- It is by using inheritance that we can create derived clases that conform to the abstract polymorphic interfaced defined by pure virtual functions in abstract base classes.
 
@@ -251,7 +251,7 @@ There are two basic functions that a designer must perform very carefully: *deco
 -  In order for the LSP to hold, and with it the Open-Closed principle, all derivatives must conform to the behavior that clients expect of the base classes that they use.
 
 ##### Design By Contract
- - There is a strong relationship between the LSp and the concept of Design by Contract as expounded by Bertrand Meyer.
+ - There is a strong relationship between the LSP and the concept of Design by Contract as expounded by Bertrand Meyer.
  	- Using this scheme, methods of classes declare preconditions and postconditions.
  		- The precondtions must be true in order for the method to execute. Upon completion, the method guarantees that the postcondition will be true.
  		

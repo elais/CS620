@@ -24,6 +24,7 @@ require MAIN_HOME + '/util/context'
 require MAIN_HOME + '/util/subject'
 require MAIN_HOME + '/util/strategy'
 require MAIN_HOME + '/util/simplebreak'
+require MAIN_HOME + '/util/newFormat'
 require MAIN_HOME + '/util/observer'
 require MAIN_HOME + '/util/spellcheck'
 require MAIN_HOME + '/util/dictionary'
@@ -50,5 +51,6 @@ require MAIN_HOME + '/view/controllerview'
 
 model = Document.new
 controller = Scroll.new(BasicDraw.new(model, SimpleBreak.new))
+controller2 = Scroll.new(BasicDraw.new(model, NewBreak.new))
 view = View.new(controller, model)
 view2 = View.new(controller, model)
